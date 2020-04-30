@@ -181,7 +181,7 @@ var processing = new Processing(canvas, function(processing) {
       img.onload = function() {
           ctx.drawImage(img, width/2-img.width/2, height/2-img.height/2);
       };
-      img.src = 'https://gitlab.com/Alirezaaraby/test/-/raw/master/Webp.net-resizeimage__15_.png';
+      img.src = 'https://raw.githubusercontent.com/Alirezaaraby/ZOR-Zeros-Ones-Rain/master/Main%20Images/IZ_Resized.png';
   };
 
   draw = function() {
