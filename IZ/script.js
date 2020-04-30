@@ -3,10 +3,7 @@ var processing = new Processing(canvas, function(processing) {
   var canvasSize = 400;
   processing.size(canvasSize, canvasSize);
   processing.background(0xFFF);
-
-  // canvas.drawImage("https://picsum.photos/200", 4, 5);
-
-
+  
   var mouseIsPressed = false;
   processing.mousePressed = function () { mouseIsPressed = true; };
   processing.mouseReleased = function () { mouseIsPressed = false; };
@@ -18,52 +15,26 @@ var processing = new Processing(canvas, function(processing) {
 
 
   with (processing) {
-  ////    Display Rules     ////
-
-  /*
-      A random character is created
-      This character appears at the top of the screen and runs downward like a raindrop
-      The character leaves a fading trail behind it
-      The character randomizes every update
-
-      From wikipedia, the description of the code:
-      In the film, the code that comprises the Matrix itself is frequently represented as downward-flowing
-      green characters. This code includes mirror images of half-width kana characters and Latin letters and
-      numerals. The effect resembles that of the older green screen displays, since the letters leave a
-      fluorescent trace on the screen.
-  */
-
-
-  ////    Debugging   ////
-
-  //  good values: codeSize 10, codeSpeed 40, maxParticles 75
+    
   var codeSize = 10;
   var codeSpeed = 40;
   var maxParticles = 75;
   var chars = "01010100 01111001 01100011 01101000 0110111";
-  // var chars = "あかさたなはまやらわがざだばぱいきしちにひみりゐぎじぢびぴうくすつうふむゆるぐずづぶぷえけせてねへめれゑげぜでべぺおこそとのほもよろをごぞどぼぽ1234567890123456789012345678901234567890123456789012345678901234567890";
 
-
-  ////    Time    ////
-
-  //  Tracks elapsed time between updates/draw calls
   var DeltaTime = function () {
       this.delta = 0;
       this.end = 0;
       this.start = millis();
   };
+    
   DeltaTime.prototype.Update = function () {
       this.end = millis();
-      this.delta = (this.end - this.start) / 1000;
+      this.delta = (this.end - this.start) / 900;
       this.start = this.end;
       this.fps = 1/this.delta;
   };
   var dt = new DeltaTime();
 
-
-  ////    Primative values with special properties    ////
-
-  //  Append list2 to list1 and return list1
   var PushAll = function (L1, L2) {
       if (L2.length === 0) return L1;
     
@@ -72,9 +43,6 @@ var processing = new Processing(canvas, function(processing) {
       }
       return L1;
   };
-
-
-  ////    Recycling System    ////
 
   var Recycler = function () {};
   Recycler.prototype.Init = function () {
@@ -200,24 +168,12 @@ var processing = new Processing(canvas, function(processing) {
   };
   var theMatrix = new CodeSystem();
 
-
-  ////    Reset the simulation    ////
-
   var InitProgram = function () {
       fill(0, 0, 0);
       rect(0,0,width,height);
       theMatrix.Init();
   };
-
-  ////    Overrides for built-in functions    ////
-
-  var showCopyright = false;
-  var drawCopyright = function () {
-      var size = 10;
-      textAlign(CENTER, CENTER);
-      fill(255,255,255, 40);
-      text("AlirezaAraby@IliyaZamany", width/2, height - 2 * size);
-  };
+        
   var showImage = true;
   var drawImage = function () {
       var ctx = document.getElementById('main').getContext('2d');
@@ -255,8 +211,6 @@ var processing = new Processing(canvas, function(processing) {
       showCopyright = !showCopyright;
       showImage = !showImage;
   };
-
-  ////    start the simulation    ////
 
   InitProgram();
 
