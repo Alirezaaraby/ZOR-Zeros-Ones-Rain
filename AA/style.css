@@ -1,0 +1,14 @@
+body {
+  background: #202020 url("https://raw.githubusercontent.com/Alirezaaraby/ZOR-Zeros-Ones-Rain/master/Main%20Images/Binary%20Code.jpeg");
+  backdrop-filter: blur(4px);
+  background-size: cover;
+}
+
+canvas {
+  border: 1px solid gray;
+  position: relative; 
+  left: 50%;
+  transform: translateX(-50%);
+  width:50%;
+  height:75%;
+}
